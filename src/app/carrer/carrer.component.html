@@ -1,0 +1,202 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light navbar1"
+    [class.scrolled]="isScrolled" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand"><img src="../../assets/images/elogo.png" style="width: 40%;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a routerLink="/about" class="nav-link">About</a></li>
+                <li class="nav-item"><a routerLink="/service" class="nav-link">Services</a></li>
+                <li class="nav-item"><a routerLink="/product" class="nav-link">Product</a></li>
+                <li class="nav-item"><a routerLink="/team" class="nav-link">Team</a></li>
+                <li class="nav-item"><a routerLink="/blog" class="nav-link">Blog</a></li>
+                <li class="nav-item active"><a routerLink="/career" class="nav-link">Career</a></li>
+                <li class="nav-item"><a routerLink="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="hero-wrap js-fullheight"
+    style="background-image: url(&quot;../../assets/images/img1.jpg&quot;); height: 600px; background-position: 50% 0%;"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+            data-scrollax-parent="true" style="height: 600px;">
+            <div class="col-md-6" data-aos="zoom-in">
+                <h2 class="subheading">we</h2>
+                <h1 class="mb-4" style="color: #7ef399; font-size: 70px;">EZIO INFOTECH</h1>
+                <h2 class="mb-4" style="color: #ffffff;">You can fly high like an eagle with us..</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="section bg-soft" style="padding-top: 0px;">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-8">
+                <div class="section-heading mb-5 text-center">
+                    <h2>Opportunities With Us</h2>
+                    <p class="lead">
+                        Ready to take the next step in your career? Join our team and become part of a dynamic and
+                        growing organization. We look forward to welcoming you to the EZIO INFOTECH family!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- <div class="col-md-4 col-lg-8 mb-4"> -->
+            <div class="col-12 col-lg-6 mb-5" *ngFor="let item of getCarrer">
+                <!-- Icon box -->
+                <div class="icon-box p-3 border border-variant-soft bg-white rounded-custom">
+                    <div class="date">
+                        <h2 class="h5" style="color: #ffffff; margin: 0.3rem;">{{item.job_name}}</h2>
+                    </div>
+
+                    <div class="mb-4 mt-2">
+
+                        <p class="text-height-1" style="margin-bottom: 0.2rem;"><span><i class="fa fa-bookmark"
+                                    style="color: #00b9da; margin-right: 5px;"></i></span>{{item.qualification}}
+                        </p>
+
+                        <p class="text-height-1" style="margin-bottom: 0.2rem;"> <span><i class="fa fa-bookmark"
+                                    style="color: #00b9da; margin-right: 5px;"></i>{{item.job_type}} </span>
+                            &nbsp;&nbsp;
+                            <span><i class="fa fa-bookmark"
+                                    style="color: #00b9da; margin-right: 5px;"></i>{{item.job_experience}}
+                            </span>
+                        </p>
+
+
+
+
+                        <p class="text-height-1"><span><i class="fa fa-trophy"
+                                    style="color: #00b9da; margin-right: 5px;"></i></span>{{item.skills}}</p>
+                        <h3 class="h6">Job Description</h3>
+                        <p class="text-height-7" style="border-left: 5px solid #eee; padding: 0 0 0 20px;"><br>
+                            <br>
+                            <ng-container *ngIf="item.disc1">{{ '• ' + item.disc1 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc2">{{ '• ' + item.disc2 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc3">{{ '• ' + item.disc3 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc4">{{ '• ' + item.disc4 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc5">{{ '• ' + item.disc5 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc6">{{ '• ' + item.disc6 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc7">{{ '• ' + item.disc7 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc8">{{ '• ' + item.disc8 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc9">{{ '• ' + item.disc9 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc10">{{ '• ' + item.disc10 }}<br><br></ng-container>
+
+                        </p>
+
+                    </div>
+
+                    <div class="text-right">
+                        <a class="btn btn-secondary text-center" data-bs-toggle="modal" data-bs-target="#addeditworks"
+                            (click)="getCarrerbyId(item.id)">
+                            Apply Here
+                        </a>
+                    </div>
+                </div>
+                <!-- End of Icon box -->
+                <div class="modal fade" id="addeditworks" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Career Edit Modal</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form class="forms-sample" #CareersForm="ngForm" (submit)="addcarrer(CareersForm)">
+                                    <div class="form-group">
+                                        <label for="">Name <span>*</span> </label>
+                                        <input type="text" class="form-control" [(ngModel)]="emailcareer.name"
+                                            name="name" placeholder="Enter your name" [required]="true">
+                                        <!-- Display validation message if name field is empty -->
+                                        <div *ngIf="CareersForm.controls['name'].errors?.['required'] && CareersForm.controls['name'].touched"
+                                            class="required">
+                                            Name is required.
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Phone no <span>*</span></label>
+                                            <input type="number" class="form-control" [(ngModel)]="emailcareer.phone_no"
+                                                name="phone_no" pattern="[0-9]{10}" maxlength="10" [required]="true">
+                                            <div *ngIf="CareersForm.controls['phone_no'].errors?.['required'] && CareersForm.controls['phone_no'].touched"
+                                                class="required">
+                                                Phone no is required.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">Email <span>*</span></label>
+                                            <input type="email" class="form-control" [(ngModel)]="emailcareer.email"
+                                                name="email" placeholder="Enter your Email" [required]="true">
+                                            <div *ngIf="CareersForm.controls['email'].errors?.['required'] && CareersForm.controls['email'].touched"
+                                                class="required">
+                                                Email is required.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="">Experience in Year<span>*</span>
+                                            </label>
+                                            <input type="number" class="form-control" [(ngModel)]="emailcareer.year"
+                                                name="year" placeholder="Year" [required]="true">
+                                            <div *ngIf="CareersForm.controls['year'].errors?.['required'] && CareersForm.controls['year'].touched"
+                                                class="required">
+                                                Year is required if fresher enter 0.
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="">Experience in Months <span>*</span></label>
+                                            <input type="number" class="form-control" [(ngModel)]="emailcareer.months"
+                                                name="months" placeholder="Months" [required]="true">
+
+                                            <div *ngIf="CareersForm.controls['months'].errors?.['required'] && CareersForm.controls['months'].touched"
+                                                class="required">
+                                                Months is required if fresher enter 0.
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Add Resume <span>*</span></label>
+                                        <input type="file" class="form-control" #fileInput required
+                                            (change)="validateFile(fileInput)">
+                                        <div *ngIf="fileInput && fileInput.files && fileInput.files.length === 0 && fileInput.classList.contains('ng-touched')"
+                                            class="required">
+                                            Please select a file.
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2" data-bs-dismiss="modal"
+                                        [disabled]="!CareersForm.valid">Submit</button>
+
+
+                                </form>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

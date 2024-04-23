@@ -1,0 +1,199 @@
+<!-- partial:partials/_navbar.html -->
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+  <div class="navbar-brand-wrapper d-flex align-items-center">
+    <a class="navbar-brand brand-logo" href="index.html">
+      <img src="../../assets/images/elogo.png" alt="logo" class="logo-dark">
+      <i style="color: #7ef399; font-weight: 500;">EZIO INFOTECH</i>
+    </a>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1 btn">
+    <i class="fa fa-home nav-link"></i><i>Home</i>
+    <ul class="navbar-nav navbar-nav-right ml-auto edit-nav">
+      <i class="fa fa-arrows-alt" (click)="toggleFullScreen()"></i>
+      <i class="fa fa-sign-out hover-effect" (click)="logout()"></i>
+    </ul>
+  </div>
+</nav>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+  <!-- partial:partials/_sidebar.html -->
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-profile">
+        <a href="#" class="nav-link">
+          <div class="profile-image">
+            <img class="img-xs rounded-circle" src="../../assets/images/person_2.jpg" alt="profile image">
+          </div>
+          <div class="text-wrapper">
+            <p class="profile-name">Allen Moreno</p>
+            <p class="designation">Administrator</p>
+          </div>
+
+        </a>
+      </li>
+      <li class="nav-item nav-category">
+        <span class="nav-link btn" [routerLink]="'/dashbord'">Dashboard</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-briefcase" [routerLink]="'/user-works'">
+          <span class="menu-title" style="margin-left: 10px;">Work</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-server" [routerLink]="'/user-service'">
+          <span class="menu-title" style="margin-left: 10px;">Service</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-users" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+          <span class="menu-title" style="margin-left: 10px;">Teams</span>
+          <span class="fa fa-angle-down" style="margin-left: 100px;"></span>
+        </a>
+        <div class="collapse" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small nav-item">
+            <li><a [routerLink]="'/user-employee'" class="text-white">Employee photo</a></li>
+            <li><a [routerLink]="'/user-team'" class="text-white">Group photo</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-server" [routerLink]="'/user-career'">
+          <span class="menu-title" style="margin-left: 10px;">Career</span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link fa fa-address-card" [routerLink]="'/client-review'">
+          <span class="menu-title" style="margin-left: 10px;">Client Review</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-product-hunt" [routerLink]="'/user-product'">
+          <span class="menu-title" style="margin-left: 10px;">Product</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link fa fa-newspaper-o" [routerLink]="'/user-blog'">
+          <span class="menu-title" style="margin-left: 10px;">Blog</span>
+        </a>
+      </li>
+
+
+    </ul>
+  </nav>
+  <!-- partial -->
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-3 col-6 ">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>{{work}}</h3>
+
+              <p> TOTAL WORK</p>
+            </div>
+
+            <a routerLink="/user-works" class="small-box-footer">More info <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6 ">
+          <!-- small box -->
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3>{{service}}</h3>
+
+              <p>TOTAL SERVICE</p>
+            </div>
+
+            <a routerLink="/user-service" class="small-box-footer">More info <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6 ">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>{{team}}</h3>
+
+              <p>TOTAL EMPLOYEES</p>
+            </div>
+
+            <a routerLink="/user-employee" class="small-box-footer">More info <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6 ">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>{{career}}</h3>
+
+              <p>TOTAL CAREER</p>
+            </div>
+
+            <a routerLink="/user-career" class="small-box-footer">More info <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6 ">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>{{client}}</h3>
+
+              <p>TOTAL CLIENT REVIEW</p>
+            </div>
+
+            <a routerLink="/client-review" class="small-box-footer">More info <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-secondary">
+            <div class="inner">
+              <h3>{{product}}</h3>
+
+              <p>TOTAL PRODUCT</p>
+            </div>
+
+            <a routerLink="/user-product" class="small-box-footer">More info <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6 ">
+          <!-- small box -->
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3>{{blog}}</h3>
+
+              <p>TOTAL Blog</p>
+            </div>
+
+            <a routerLink="/user-blog" class="small-box-footer">More info <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Copyright © 2023 <a
+            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Ezio Infotech.</a> All rights
+          reserved.</span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+  <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->

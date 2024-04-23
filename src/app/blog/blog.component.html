@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light navbar1"
+    [class.scrolled]="isScrolled" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand"><img src="../../assets/images/elogo.png" style="width: 40%;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a routerLink="/about" class="nav-link">About</a></li>
+                <li class="nav-item"><a routerLink="/service" class="nav-link">Services</a></li>
+                <li class="nav-item"><a routerLink="/product" class="nav-link">Product</a></li>
+                <li class="nav-item"><a routerLink="/team" class="nav-link">Team</a></li>
+                <li class="nav-item active"><a routerLink="/blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a routerLink="/career" class="nav-link">Career</a></li>
+                <li class="nav-item"><a routerLink="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="hero-wrap js-fullheight"
+    style="background-image: url(&quot;../../assets/images/img1.jpg&quot;); height: 600px; background-position: 50% 0%;"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+            data-scrollax-parent="true" style="height: 600px;">
+            <div class="col-md-6" data-aos="zoom-in">
+                <h2 class="subheading">we</h2>
+                <h1 class="mb-4" style="color: #7ef399; font-size: 70px;">EZIO INFOTECH</h1>
+                <h2 class="mb-4" style="color: #ffffff;">You can fly high like an eagle with us..</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="wp-block-cg-blocks-intro-para undefined section section--intro" id="introParaWrapper">
+    <div class="intro-para">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-10">
+                    <h2 class="intro-para-title"> Explore a range of perspectives from EZIO experts on key topics
+                        for business, technology and society. </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section--publications section--insights-content archive-pages archive-ExpertPerspective-Page">
+    <div class="container">
+
+        <div class="filters filters--vertical" data-max="10">
+
+
+            <div class="filters-content filters-content-archive" data-type="blog" data-page="1" data-page-max="123">
+                <div class="box box--event filter-box" *ngFor="let item of getBlog">
+                    <a>
+                        <div class="box-img-wrapper"><img
+                            [src]="getBase64Image(item.img)"
+                                alt=""></div>
+                    </a>
+                    <div class="box-inner">
+                        <span class="box-tag">{{item.subject}}</span>
+                        <a class="box-title">
+                            <h4>{{item.tittle}}</h4>
+                        </a>
+                    </div>
+                    <div class="box-right archive-blog-expert">
+                        <a class="cta-link" (click)="readbutton(item.id)">Read more <span class="fa fa-long-arrow-right" style="padding-left: 5px;"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,445 @@
+<!-- partial:partials/_navbar.html -->
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="navbar-brand-wrapper d-flex align-items-center">
+        <a class="navbar-brand brand-logo" href="index.html">
+            <img src="../../assets/images/elogo.png" alt="logo" class="logo-dark">
+            <i style="color: #7ef399; font-weight: 500;">EZIO INFOTECH</i>
+        </a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1 btn">
+        <i class="fa fa-home nav-link"></i><i>Home</i>
+        <ul class="navbar-nav navbar-nav-right ml-auto edit-nav">
+            <i class="fa fa-arrows-alt" (click)="toggleFullScreen()"></i>
+            <i class="fa fa-sign-out hover-effect" (click)="logout()"></i>
+          </ul>
+    </div>
+</nav>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+            <li class="nav-item nav-profile">
+                <a href="#" class="nav-link">
+                    <div class="profile-image">
+                        <img class="img-xs rounded-circle" src="../../assets/images/person_2.jpg" alt="profile image">
+                    </div>
+                    <div class="text-wrapper">
+                        <p class="profile-name">Allen Moreno</p>
+                        <p class="designation">Administrator</p>
+                    </div>
+
+                </a>
+            </li>
+            <li class="nav-item nav-category">
+                <span class="nav-link btn" [routerLink]="'/dashbord'">Dashboard</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-briefcase" [routerLink]="'/user-works'">
+                    <span class="menu-title" style="margin-left: 10px;">Work</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-server" [routerLink]="'/user-service'">
+                    <span class="menu-title" style="margin-left: 10px;">Service</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-users" data-bs-toggle="collapse" data-bs-target="#home-collapse"
+                    aria-expanded="false">
+                    <span class="menu-title" style="margin-left: 10px;">Teams</span>
+                    <span class="fa fa-angle-down" style="margin-left: 100px;"></span>
+                </a>
+                <div class="collapse" id="home-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small nav-item">
+                        <li><a [routerLink]="'/user-employee'" class="text-white">Employee photo</a></li>
+                        <li><a [routerLink]="'/user-team'" class="text-white">Group photo</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link fa fa-server" [routerLink]="'/user-career'">
+                    <span class="menu-title" style="margin-left: 10px;" >Career</span>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link fa fa-address-card" [routerLink]="'/client-review'">
+                    <span class="menu-title" style="margin-left: 10px;">Client Review</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-product-hunt" [routerLink]="'/user-product'">
+                    <span class="menu-title" style="margin-left: 10px;">Product</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fa fa-newspaper-o" [routerLink]="'/user-blog'">
+                    <span class="menu-title" style="margin-left: 10px;">Blog</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </nav>
+    <!-- partial -->
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-md-12 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addworks">
+                                Add Career
+                            </button>
+
+                            <div class="modal fade" id="addworks" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Carrer</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="forms-sample" #carrerForm="ngForm"
+                                                (submit)="addcarrer(carrerForm)">
+                                                <div class="form-group">
+                                                    <label for="">Job Tittle<span>*</span></label>
+                                                    <input type="text" class="form-control" name="job_name"
+                                                        placeholder="Enter a Job Tittle"
+                                                        [(ngModel)]="carrer.job_name" [required]="true">
+                                                        <small
+                                                        *ngIf="carrerForm.controls['job_name'].errors?.['required'] && carrerForm.controls['job_name'].touched"
+                                                        class="required">
+                                                        Tittle is required.
+                                                      </small>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Qualification<span>*</span></label>
+                                                    <input type="text" class="form-control" name="qualification"
+                                                        placeholder="Enter a Qualification"
+                                                        [(ngModel)]="carrer.qualification" [required]="true">
+                                                        <small
+                                                        *ngIf="carrerForm.controls['qualification'].errors?.['required'] && carrerForm.controls['qualification'].touched"
+                                                        class="required">
+                                                        Qualification is required.
+                                                      </small>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="">Job Type<span>*</span></label>
+                                                        <select id="inputState" class="form-control" [required]="true"
+                                                            [(ngModel)]="carrer.job_type" name="job_type">
+                                                            <option disabled>Choose...</option>
+                                                            <option value="Full Time">Full Time</option>
+                                                            <option value="Internship"> Internship</option>
+                                                        </select>
+                                                        <small
+                                                        *ngIf="carrerForm.controls['job_type'].errors?.['required'] && carrerForm.controls['job_type'].touched"
+                                                        class="required">
+                                                        Job Type is required.
+                                                      </small>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="">Experience<span>*</span></label>
+                                                        <input type="text" class="form-control" name="job_experience"
+                                                            placeholder="Enter experience"
+                                                            [(ngModel)]="carrer.job_experience" [required]="true">
+                                                            <small
+                                                            *ngIf="carrerForm.controls['job_experience'].errors?.['required'] && carrerForm.controls['job_experience'].touched"
+                                                            class="required">
+                                                            Experience is required.
+                                                          </small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="">Skill<span>*</span></label>
+                                                    <input type="text" class="form-control" name="skills"
+                                                        placeholder="Enter a Qualification" [(ngModel)]="carrer.skills" [required]="true">
+                                                        <small
+                                                        *ngIf="carrerForm.controls['skills'].errors?.['required'] && carrerForm.controls['skills'].touched"
+                                                        class="required">
+                                                        Skills is required.
+                                                      </small>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="discription1">Discription 1<span>*</span></label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc1" name="disc1" id="discription1" cols="30"
+                                                        rows="5" (input)="showNextInput($event.target)" [required]="true"></textarea>
+                                                        <small
+                                                        *ngIf="carrerForm.controls['disc1'].errors?.['required'] && carrerForm.controls['disc1'].touched"
+                                                        class="required">
+                                                        Discription is required.
+                                                      </small>
+                                                </div>
+                                                <div class="form-group" id="discription2-group" style="display: none;">
+                                                    <label for="discription2">Discription 2<span>*</span></label>
+
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc2" name="disc2" id="discription2"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)" [required]="true"></textarea>
+                                                        <small
+                                                        *ngIf="carrerForm.controls['disc2'].errors?.['required'] && carrerForm.controls['disc2'].touched"
+                                                        class="required">
+                                                        Discription is required.
+                                                      </small>
+                                                </div>
+                                                <div class="form-group" id="discription3-group" style="display: none;">
+                                                    <label for="discription3">Discription 3</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc3" name="disc2" id="discription3"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+                                                <div class="form-group" id="discription4-group" style="display: none;">
+                                                    <label for="discription4">Discription 4</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc4" name="disc4" id="discription4"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+                                                <div class="form-group" id="discription5-group" style="display: none;">
+                                                    <label for="discription4">Discription 5</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc5" name="disc5" id="discription5"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+                                                <div class="form-group" id="discription6-group" style="display: none;">
+                                                    <label for="discription4">Discription 6</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc6" name="disc6" id="discription6"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+                                                <div class="form-group" id="discription7-group" style="display: none;">
+                                                    <label for="discription4">Discription 7</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc7" name="disc7" id="discription7"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+                                                <div class="form-group" id="discription8-group" style="display: none;">
+                                                    <label for="discription4">Discription 8</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc8" name="disc8" id="discription8"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+
+                                                <div class="form-group" id="discription9-group" style="display: none;">
+                                                    <label for="discription4">Discription 9</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc9" name="disc9" id="discription9"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+                                                <div class="form-group" id="discription10-group" style="display: none;">
+                                                    <label for="discription4">Discription 10</label>
+                                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                                        [(ngModel)]="carrer.disc10" name="disc10" id="discription10"
+                                                        cols="30" rows="5"
+                                                        (input)="showNextInput($event.target)"></textarea>
+
+                                                </div>
+
+                                                <button type="submit" class="btn btn-primary mr-2"
+                                                    data-bs-dismiss="modal" [disabled]="!carrerForm.valid">Submit</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Job Tittle</th>
+                                        <th>Qualification</th>
+                                        <th>Job Type</th>
+                                        <th>Job Experience</th>
+                                        <th>Skills </th>
+                                        <th>Discription</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of getCarrer">
+                                        <td>{{item.job_name}}</td>
+                                        <td>{{item.qualification}}</td>
+                                        <td>{{item.job_type}}</td>
+                                        <td>{{item.job_experience}}</td>
+                                        <td>{{item.skills}}</td>
+                                        <td><br>
+                                            <br>
+                            <ng-container *ngIf="item.disc1">{{ '• ' + item.disc1 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc2">{{ '• ' + item.disc2 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc3">{{ '• ' + item.disc3 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc4">{{ '• ' + item.disc4 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc5">{{ '• ' + item.disc5 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc6">{{ '• ' + item.disc6 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc7">{{ '• ' + item.disc7 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc8">{{ '• ' + item.disc8 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc9">{{ '• ' + item.disc9 }}<br><br></ng-container>
+                            <ng-container *ngIf="item.disc10">{{ '• ' + item.disc10 }}<br><br></ng-container>
+                                        </td>
+                                        <td><button class="btn-success" data-bs-toggle="modal"
+                                                data-bs-target="#addeditworks" (click)="getCarrerbyId(item.id)"><i
+                                                    class="fa fa-edit" aria-hidden="true"></i>
+                                            </button> <button class="btn-danger" (click)="deleteCarrer(item.id)"><i
+                                                    class="fa fa-trash" aria-hidden="true"></i>
+                                            </button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="addeditworks" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Career Edit Modal</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form class="forms-sample" #CareersForm="ngForm" (submit)="updatecareers(CareersForm)">
+                                <div class="form-group">
+                                    <label for="">Qualification</label>
+                                    <input type="text" class="form-control" name="qualification"
+                                        placeholder="Enter a Qualification" [(ngModel)]="carrerid.qualification">
+                                    <input type="hidden" name="id" [(ngModel)]="carrerid.id">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="">Job Type</label>
+                                        <select id="inputState" class="form-control" [(ngModel)]="carrerid.job_type"
+                                            name="job_type">
+                                            <option value="" disabled selected>Choose...</option>
+                                            <option value="Full Time">Full Time</option>
+                                            <option value="Internship"> Internship</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="">Experience</label>
+                                        <input type="text" class="form-control" name="job_experience"
+                                            placeholder="Enter experience" [(ngModel)]="carrerid.job_experience">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Skill</label>
+                                    <input type="text" class="form-control" name="skills"
+                                        placeholder="Enter a Qualification" [(ngModel)]="carrerid.skills">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Discription 1</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc1" name="disc1" id="" cols="30" rows="5"
+                                        ></textarea>
+                                </div>
+                                <div class="form-group" id="">
+                                    <label for="">Discription 2</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc2" name="disc2" id="" cols="30" rows="5"
+                                        ></textarea>
+
+                                </div>
+                                <div class="form-group" id="">
+                                    <label for="">Discription 3</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc3" name="disc2" id="" cols="30" rows="5"
+                                    ></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="discription4">Discription 4</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc4" name="disc4" id="" cols="30" rows="5"
+                                        ></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="discription4">Discription 5</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc5" name="disc5" id="" cols="30" rows="5"
+                                    ></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="discription4">Discription 6</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc6" name="disc6" id="" cols="30" rows="5"
+                                        ></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="discription4">Discription 7</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc7" name="disc7" id="" cols="30" rows="5"
+                                        ></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="discription4">Discription 8</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc8" name="disc8" id="" cols="30" rows="5"
+                                        ></textarea>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="discription4">Discription 9</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc9" name="disc9" id="" cols="30" rows="5"
+                                        ></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="discription4">Discription 10</label>
+                                    <textarea class="form-control" placeholder="Enter a Discription"
+                                        [(ngModel)]="carrerid.disc10" name="disc10" id="" cols="30"
+                                        rows="5" ></textarea>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary mr-2"
+                                    data-bs-dismiss="modal">Submit</button>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Copyright © 2023 <a
+                        href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Ezio
+                        Infotech.</a> All rights
+                    reserved.</span>
+            </div>
+        </footer>
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->

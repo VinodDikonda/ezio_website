@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light navbar1"
+  [class.scrolled]="isScrolled" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand"><img src="../../assets/images/elogo.png" style="width: 40%;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span> Menu
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
+        <li class="nav-item "><a routerLink="/about" class="nav-link">About</a></li>
+        <li class="nav-item"><a routerLink="/service" class="nav-link">Services</a></li>
+        <li class="nav-item"><a routerLink="/product" class="nav-link">Product</a></li>
+        <li class="nav-item active"><a routerLink="/team" class="nav-link">Team</a></li>
+        <li class="nav-item"><a routerLink="/blog" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a routerLink="/career" class="nav-link">Career</a></li>
+        <li class="nav-item"><a routerLink="/contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END nav -->
+<div class="hero-wrap js-fullheight"
+  style="background-image: url(&quot;../../assets/images/img1.jpg&quot;); height: 600px; background-position: 50% 0%;"
+  data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+      data-scrollax-parent="true" style="height: 600px;">
+      <div class="col-md-6" data-aos="zoom-in">
+        <h2 class="subheading">we</h2>
+        <h1 class="mb-4" style="color: #7ef399; font-size: 70px;">EZIO INFOTECH</h1>
+        <h2 class="mb-4" style="color: #ffffff;">You can fly high like an eagle with us..</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <h3 class="text-center text-primary"> Our Team's
+        </h3>
+        <p class="lead">Our team consists of young and self-motivated domain specialists who love their work and are perfectionists. We take pride in our enthusiasm and ‘can do’ attitude which always gets work done on time..</p>
+
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" >
+              <div class="carousel-item active" *ngFor="let item of getgrouppic">
+                <img [src]="getBase64Image(item.userimg)" class="d-block" style="width: 100%; height: 400px;">
+              </div>
+              
+             
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+            <div class="col-md-7 heading-section text-center ">
+                <h2>Expert Team Members
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-lg-3 d-flex" *ngFor="let item of getTeam" style="margin-bottom: 5%;">
+                <div class="staff">
+                    <div class="align-items-stretch">
+                        <!-- <div class="img align-self-stretch" [style.background-image]="'url(' + getBase64Image(item.userimg) + ')'"></div> -->
+                        <div ><img  class="img align-self-stretch" [src]="getBase64Image(item.userimg)"></div>
+                    </div>
+                    <div class="text pt-3 px-3 pb-4 text-center">
+                        <h3>{{item.name}}</h3>
+                        <span class="position mb-2">{{item.work}}</span>
+                        <div class="faded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+
+    </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,214 @@
+<!-- partial:partials/_navbar.html -->
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="navbar-brand-wrapper d-flex align-items-center">
+      <a class="navbar-brand brand-logo" href="index.html">
+        <img src="../../assets/images/elogo.png" alt="logo" class="logo-dark">
+        <i style="color: #7ef399; font-weight: 500;">EZIO INFOTECH</i>
+      </a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1 btn">
+      <i class="fa fa-home nav-link"></i><i>Home</i>
+      <ul class="navbar-nav navbar-nav-right ml-auto edit-nav">
+        <i class="fa fa-arrows-alt" (click)="toggleFullScreen()"></i>
+        <i class="fa fa-sign-out hover-effect" (click)="logout()"></i>
+      </ul>
+    </div>
+  </nav>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-profile">
+          <a href="#" class="nav-link">
+            <div class="profile-image">
+              <img class="img-xs rounded-circle" src="../../assets/images/person_2.jpg" alt="profile image">
+            </div>
+            <div class="text-wrapper">
+              <p class="profile-name">Allen Moreno</p>
+              <p class="designation">Administrator</p>
+            </div>
+  
+          </a>
+        </li>
+        <li class="nav-item nav-category">
+          <span class="nav-link btn" [routerLink]="'/dashbord'">Dashboard</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fa fa-briefcase" [routerLink]="'/user-works'">
+            <span class="menu-title" style="margin-left: 10px;">Work</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fa fa-server" [routerLink]="'/user-service'">
+            <span class="menu-title" style="margin-left: 10px;">Service</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fa fa-users" data-bs-toggle="collapse" data-bs-target="#home-collapse"
+                    aria-expanded="false">
+                    <span class="menu-title" style="margin-left: 10px;">Teams</span>
+                    <span class="fa fa-angle-down" style="margin-left: 100px;"></span>
+                </a>
+          <div class="collapse" id="home-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small nav-item">
+              <li><a [routerLink]="'/user-employee'" class="text-white">Employee photo</a></li>
+              <li><a [routerLink]="'/user-team'" class="text-white">Group photo</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fa fa-server" [routerLink]="'/user-career'">
+              <span class="menu-title" style="margin-left: 10px;" >Career</span>
+          </a>
+      </li>
+        <li class="nav-item ">
+          <a class="nav-link fa fa-address-card" [routerLink]="'/client-review'">
+            <span class="menu-title" style="margin-left: 10px;">Client Review</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link fa fa-product-hunt" [routerLink]="'/user-product'">
+            <span class="menu-title" style="margin-left: 10px;">Product</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fa fa-newspaper-o" [routerLink]="'/user-blog'">
+              <span class="menu-title" style="margin-left: 10px;">Blog</span>
+          </a>
+      </li>
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="row">
+          <div class="col-md-12 grid-margin">
+            <div class="card">
+              <div class="card-body">
+  
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addworks">
+                  Add Product
+                </button>
+  
+                <div class="modal fade" id="addworks" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Works Modal</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+  
+                        <form class="forms-sample" #productForm="ngForm" (submit)="addproduct(productForm)"
+                          enctype="multipart/form-data">
+                          <div class="form-group">
+                            <label for="">Tittle<span>*</span></label>
+                            <input type="text" class="form-control" name="tittle" [(ngModel)]="product.tittle"
+                              placeholder="Enter a Tittle" [required]="true">
+                              <small
+                              *ngIf="productForm.controls['tittle'].errors?.['required'] && productForm.controls['tittle'].touched"
+                              class="required">
+                              Tittle is required.
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <label for="">Description<span>*</span></label>
+                            <textarea class="form-control"
+                              placeholder="Enter a Description" [(ngModel)]="product.discription" name="discription" rows="4" cols="50" [required]="true"></textarea>
+                              <small
+                              *ngIf="productForm.controls['discription'].errors?.['required'] && productForm.controls['discription'].touched"
+                              class="required">
+                              Description is required.
+                            </small>
+                          </div>
+                          <div class="form-group">
+                            <label for="">Logo<span>*</span></label>
+                            <input type="file" class="form-control" (change)="handleFileInput($event)" name="img" required>
+                          </div>
+                          <button type="submit" class="btn btn-primary mr-2" data-bs-dismiss="modal"
+                          [disabled]="!productForm.valid || !isFileSelected()">Submit</button>
+                          <small *ngIf="!isFileSelected()" class="text-danger">Please select a file</small>
+                        </form>
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th>Tittle</th>
+                        <th>Discription</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of getproduct">
+                        <td>{{item.tittle}}</td>
+                        <td>{{item.discription}}</td>
+                        <td><img [src]="getBase64Image(item.img)" alt=""
+                            style="width: 100px; border-radius: 10%; height: 100%;"></td>
+                        <td><button class="btn-success" data-bs-toggle="modal" data-bs-target="#addeditworks" (click)="getproductbyId(item.id)"><i
+                              class="fa fa-edit" aria-hidden="true" ></i>
+                          </button> <button class="btn-danger" (click)="deleteproduct(item.id)"><i class="fa fa-trash" aria-hidden="true" ></i>
+                          </button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="addeditworks" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Product Modal</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+    
+                  <form class="forms-sample" #productupdateForm="ngForm"  (submit)="updateproduct(productupdateForm)"
+                            enctype="multipart/form-data">
+                            <div class="form-group">
+                              <label for="">Tittle</label>
+                              <input type="hidden" [(ngModel)]="productid.id" name="id">
+                              <input type="text" class="form-control" [(ngModel)]="productid.tittle" name="tittle"
+                                placeholder="Enter a Tittle">   
+                            </div>
+                            <div class="form-group">
+                              <label for="">Description</label>
+                              <textarea class="form-control" [(ngModel)]="productid.discription"
+                                placeholder="Enter a Description" name="discription" rows="4" cols="50"></textarea>
+                            </div>
+                            <div class="form-group relative">
+                              <label for="">Logo</label>
+                               <img *ngIf="productid.img" [src]="getBase64Image(productid.img)" alt="Image" class="updateimg">
+                              <input type="file" class="form-control" (change)="handleFileInput($event)" name="fa_logo">
+                            </div>
+                            <button type="submit" class="btn btn-primary mr-2" data-bs-dismiss="modal">Submit</button>
+                          </form>
+                
+    
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- content-wrapper ends -->
+      <!-- partial:partials/_footer.html -->
+      <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Copyright © 2023 <a
+              href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Ezio Infotech.</a> All rights
+            reserved.</span>
+        </div>
+      </footer>
+      <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->

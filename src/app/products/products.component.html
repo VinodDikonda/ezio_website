@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light navbar1"
+  [class.scrolled]="isScrolled" id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand"><img src="../../assets/images/elogo.png" style="width: 40%;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span> Menu
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a routerLink="/home" class="nav-link">Home</a></li>
+        <li class="nav-item "><a routerLink="/about" class="nav-link">About</a></li>
+        <li class="nav-item"><a routerLink="/service" class="nav-link">Services</a></li>
+        <li class="nav-item active"><a routerLink="/product" class="nav-link">Product</a></li>
+        <li class="nav-item"><a routerLink="/team" class="nav-link">Team</a></li>
+        <li class="nav-item"><a routerLink="/blog" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a routerLink="/career" class="nav-link">Career</a></li>
+        <li class="nav-item"><a routerLink="/contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- END nav -->
+<div class="hero-wrap js-fullheight"
+  style="background-image: url(&quot;../../assets/images/img1.jpg&quot;); height: 600px; background-position: 50% 0%;"
+  data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+      data-scrollax-parent="true" style="height: 600px;">
+      <div class="col-md-6" data-aos="zoom-in">
+        <h2 class="subheading">we</h2>
+        <h1 class="mb-4" style="color: #7ef399; font-size: 70px;">EZIO INFOTECH</h1>
+        <h2 class="mb-4" style="color: #ffffff;">You can fly high like an eagle with us..</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center pb-5 mb-3">
+      <div class="col-md-7 heading-section text-center">
+        <span class="subheading mb-3">FROM 
+          &amp; PRODUCT</span>
+        <h2>Our Product's
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in-up" *ngFor="let item of getproduct">
+        <div class="block-7">
+          <div class="text-center">
+            <div class="icon d-flex align-items-center justify-content-center">
+              <img [src]="getBase64Image(item.img)" style="width: 130%;">
+            </div>
+            <h4 class="heading-2">{{item.tittle}}
+            </h4>
+
+            <ul class="pricing-text mb-5" style="margin-top: 20px;">
+              <li>{{item.discription}}</li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
